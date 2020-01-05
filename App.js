@@ -1,10 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground } from 'react-native';
+
+import HomeScreen from './screens/HomeScreen';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <ImageBackground source={require('./images/pokemon-background.jpg')} style={styles.background}>
+        <HomeScreen />
+      </ImageBackground>
     </View>
   );
 }
@@ -12,8 +16,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+  },
+  background: {
+    flex: 1,
+    resizeMode: 'cover',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 });

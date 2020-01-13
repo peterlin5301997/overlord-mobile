@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 
 import HomeScreen from './screens/HomeScreen';
+import LoginScreen from './screens/LoginScreen';
 
 export default function App() {
+
+  const [currentScreen, setScreen] = useState('HomeScreen');
+
+  const login = () => {
+    setScreen('LoginScreen');
+  }
+
   return (
     <View style={styles.container}>
       <ImageBackground source={require('./images/pokemon-background.jpg')} style={styles.background}>
-        <HomeScreen />
+        {
+          currentScreen == 'HomeScreen' ? <HomeScreen login={login} /> :
+          currentScreen == 'LoginScreen' ? <LoginScreen /> : null
+        }
       </ImageBackground>
     </View>
   );

@@ -1,14 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-class Home extends React.Component {
+class HomeScreen extends React.Component {
   render() {
     return(
       <View style={styles.screen}>
         <Text style={styles.title}>OVERLORD</Text>
         <Text style={styles.subtitle}>An Icebreaker Game</Text>
-        <Button title="Login" />
-        <Button title="Register" />
+        <View style={styles.button}><Button title="Login" onPress={this.props.login} /></View>
+        <View style={styles.button}><Button title="Register" onPress={() => console.log('register button pressed')} /></View>
       </View>
     )
   }
@@ -23,7 +23,11 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 25,
+  },
+  button: {
+    width: 150,
+    margin: '1%',
   }
 })
 
-export default Home;
+export default HomeScreen;

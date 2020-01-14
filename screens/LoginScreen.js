@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 class LoginScreen extends React.Component {
 
@@ -10,25 +10,23 @@ class LoginScreen extends React.Component {
 
   render() {
     return(
-      <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
-        <View>
-          <Text style={styles.title}>Login Screen</Text>
-          <TextInput
-            style={styles.textInput}
-            placeholder='Username'
-            onChangeText={(username) => this.setState({ username })}
-            value={this.state.username}
-          />
-          <TextInput
-            style={styles.textInput}
-            placeholder='Password'
-            onChangeText={(password) => this.setState({ password })}
-            value={this.state.password}
-            secureTextEntry
-          />
-          <Button title='Login' />
-        </View>
-      </TouchableWithoutFeedback>
+      <View>
+        <Text style={styles.title}>Login Screen</Text>
+        <TextInput
+          style={styles.textInput}
+          placeholder='Username'
+          onChangeText={(username) => this.setState({ username })}
+          value={this.state.username}
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholder='Password'
+          onChangeText={(password) => this.setState({ password })}
+          value={this.state.password}
+          secureTextEntry
+        />
+        <Button title='Login' />
+      </View>
     )
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
@@ -13,14 +13,16 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <ImageBackground source={require('./images/pokemon-background.jpg')} style={styles.background}>
-        {
-          currentScreen == 'HomeScreen' ? <HomeScreen login={login} /> :
-          currentScreen == 'LoginScreen' ? <LoginScreen /> : null
-        }
-      </ImageBackground>
-    </View>
+    <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
+      <View style={styles.container}>
+        <ImageBackground source={require('./images/pokemon-background.jpg')} style={styles.background}>
+          {
+            currentScreen == 'HomeScreen' ? <HomeScreen login={login} /> :
+            currentScreen == 'LoginScreen' ? <LoginScreen /> : null
+          }
+        </ImageBackground>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 

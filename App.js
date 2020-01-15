@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, ImageBackground, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 import HomeScreen from './screens/HomeScreen';
-import LoginScreen from './screens/LoginScreen';
+import GameScreen from './screens/GameScreen';
 
 export default function App() {
 
   const [currentScreen, setScreen] = useState('HomeScreen');
 
-  const login = () => {
-    setScreen('LoginScreen');
+  const play = () => {
+    setScreen('GameScreen');
   }
 
   return (
@@ -17,8 +17,8 @@ export default function App() {
       <View style={styles.container}>
         <ImageBackground source={require('./images/pokemon-background.jpg')} style={styles.background}>
           {
-            currentScreen == 'HomeScreen' ? <HomeScreen login={login} /> :
-            currentScreen == 'LoginScreen' ? <LoginScreen /> : null
+            currentScreen == 'HomeScreen' ? <HomeScreen play={play} /> :
+            currentScreen == 'GameScreen' ? <GameScreen /> : null
           }
         </ImageBackground>
       </View>

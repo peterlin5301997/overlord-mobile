@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
 class HomeScreen extends React.Component {
+
   render() {
     return(
       <View style={styles.screen}>
@@ -11,6 +12,7 @@ class HomeScreen extends React.Component {
       </View>
     )
   }
+
 };
 
 const styles = StyleSheet.create({
@@ -24,8 +26,8 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   button: {
-    width: 150,
-    margin: '1%',
+    width: 200,
+    marginVertical: '5%',
   }
 })
 

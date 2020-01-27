@@ -10,6 +10,7 @@ class GameScreen extends React.Component {
     resultMsg: '',
     evolution: 'EGG',
     modalVisible: false,
+    round: 1,
   }
 
   openModal = () => {
@@ -18,6 +19,9 @@ class GameScreen extends React.Component {
 
   closeModal = () => {
     this.setState({ modalVisible: false });
+    if (this.state.round >= 10) {
+      this.props.end()
+    }
   }
 
   evolve = () => {
@@ -53,7 +57,7 @@ class GameScreen extends React.Component {
       this.devolve()
     }
 
-    this.setState({ result })
+    this.setState({ result, round: this.state.round + 1 })
     this.openModal()
   }
 
@@ -76,7 +80,7 @@ class GameScreen extends React.Component {
             </View>
           </View>
         </Modal>
-        <Text style={styles.title}>GameScreen</Text>
+        <Text style={styles.title}>Round {this.state.round}</Text>
         <View style={styles.button}><Button onPress={() => this.handlePress('Rock')} title='🤘 Rock' /></View>
         <View style={styles.button}><Button onPress={() => this.handlePress('Paper')} title='🧻 Paper' /></View>
         <View style={styles.button}><Button onPress={() => this.handlePress('Scissor')} title='✂️ Scissor' /></View>

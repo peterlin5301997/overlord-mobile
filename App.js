@@ -12,13 +12,17 @@ export default function App() {
     setScreen('GameScreen');
   }
 
+  const end = () => {
+    setScreen('EndScreen')
+  }
+
   return (
     <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
       <View style={styles.container}>
         <ImageBackground source={require('./images/pokemon-background.jpg')} style={styles.background}>
           {
             currentScreen == 'HomeScreen' ? <HomeScreen play={play} /> :
-            currentScreen == 'GameScreen' ? <GameScreen /> : null
+            currentScreen == 'GameScreen' ? <GameScreen end={end} /> : null
           }
         </ImageBackground>
       </View>

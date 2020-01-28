@@ -1,32 +1,34 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ImageBackground, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 
 import HomeScreen from './screens/HomeScreen';
 import GameScreen from './screens/GameScreen';
+import EndScreen from './screens/EndScreen';
 
 export default function App() {
 
   const [currentScreen, setScreen] = useState('HomeScreen');
+  const [data, setData] = useState({});
 
   const play = () => {
     setScreen('GameScreen');
   }
 
-  const end = () => {
-    setScreen('EndScreen')
+  const end = (data) => {
+    setScreen('EndScreen');
+    setData(data);
   }
 
   return (
-    <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
-      <View style={styles.container}>
-        <ImageBackground source={require('./images/pokemon-background.jpg')} style={styles.background}>
-          {
-            currentScreen == 'HomeScreen' ? <HomeScreen play={play} /> :
-            currentScreen == 'GameScreen' ? <GameScreen end={end} /> : null
-          }
-        </ImageBackground>
-      </View>
-    </TouchableWithoutFeedback>
+    <View style={styles.container}>
+      <ImageBackground source={require('./images/pokemon-background.jpg')} style={styles.background}>
+        {
+          currentScreen == 'HomeScreen' ? <HomeScreen play={play} /> :
+          currentScreen == 'GameScreen' ? <GameScreen end={end} /> :
+          currentScreen == 'EndScreen' ? <EndScreen data={data} /> : null
+        }
+      </ImageBackground>
+    </View>
   );
 }
 

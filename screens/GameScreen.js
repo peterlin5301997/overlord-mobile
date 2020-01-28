@@ -7,7 +7,7 @@ class GameScreen extends React.Component {
     playerChoice: '',
     cpuChoice: '',
     result: '',
-    resultMsg: '',
+    message: '',
     evolution: 'EGG',
     modalVisible: false,
     round: 1,
@@ -19,23 +19,19 @@ class GameScreen extends React.Component {
 
   closeModal = () => {
     this.setState({ modalVisible: false });
-    if (this.state.round >= 10) {
-      this.props.end()
+    if (this.state.round > 1) {
+      this.props.end(this.state)
     }
   }
 
   evolve = () => {
     if (this.state.evolution == 'EGG') {
-      this.setState({ evolution: 'CHICKEN', resultMsg: 'You evolved into a CHICKEN!' })
+      this.setState({ evolution: 'CHICKEN', message: 'You evolved into a CHICKEN!' })
     } else if (this.state.evolution == 'CHICKEN') {
-      this.setState({ evolution: 'RAPTOR', resultMsg: 'You evolved into a RAPTOR!' })
+      this.setState({ evolution: 'RAPTOR', message: 'You evolved into a RAPTOR!' })
     } else if (this.state.evolution == 'RAPTOR') {
-      this.setState({ evolution: 'OVERLORD', resultMsg: 'You evolved into an OVERLORD!' })
+      this.setState({ evolution: 'OVERLORD', message: 'You evolved into an OVERLORD!' })
     }
-  }
-
-  devolve = () => {
-    this.setState({ evolution: 'EGG', resultMsg: 'You turned back into an EGG!' })
   }
 
   handlePress = (playerChoice) => {
@@ -54,7 +50,9 @@ class GameScreen extends React.Component {
     if (result == 'YOU WIN') {
       this.evolve()
     } else if (result == 'YOU LOSE' && this.state.evolution == 'OVERLORD') {
-      this.devolve()
+      this.setState({ evolution: 'EGG', message: 'You turned back into an EGG!' })
+    } else {
+      this.setState({ message: `You stayed as a(n) ${this.state.evolution}` })
     }
 
     this.setState({ result, round: this.state.round + 1 })
@@ -62,7 +60,7 @@ class GameScreen extends React.Component {
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     return(
       <View>
         <Modal
@@ -73,7 +71,7 @@ class GameScreen extends React.Component {
           <View style={styles.modalContainer}>
             <View style={styles.innerContainer}>
               <Text style={styles.title}>{ this.state.result }</Text>
-              <Text style={styles.subtitle}>{ this.state.resultMsg }</Text>
+              <Text style={styles.subtitle}>{ this.state.message }</Text>
               <Text style={styles.subtitle}>YOU chose { this.state.playerChoice }</Text>
               <Text style={styles.subtitle}>CPU chose { this.state.cpuChoice }</Text>
               <View style={styles.button}><Button onPress={ this.closeModal } title='Okay' /></View>
@@ -99,6 +97,7 @@ const styles = StyleSheet.create({
   },
   button: {
     marginVertical: '5%',
+    width: 200
   },
   modalContainer: {
     flex: 1,

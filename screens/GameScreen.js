@@ -65,7 +65,7 @@ class GameScreen extends React.Component {
       <View>
         <Modal
           visible={this.state.modalVisible}
-          animationType={'fade'}
+          animationType={'slide'}
           onRequestClose={ this.closeModal }
         >
           <View style={styles.modalContainer}>

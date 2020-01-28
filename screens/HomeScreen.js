@@ -8,7 +8,7 @@ class HomeScreen extends React.Component {
       <View style={styles.screen}>
         <Text style={styles.title}>OVERLORD</Text>
         <Text style={styles.subtitle}>An Icebreaker Game</Text>
-        <View style={styles.button}><Button title="Play" onPress={this.props.play} /></View>
+        <View style={styles.button}><Button color='green' title="Play" onPress={this.props.play} /></View>
       </View>
     )
   }

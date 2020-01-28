@@ -15,8 +15,8 @@ class EndScreen extends React.Component {
         <Text style={styles.title}>Game Completed!</Text>
         <Text style={styles.subtitle}>You have completed 10 rounds and reached the end of the game.</Text>
         <Text style={styles.subtitle}>Final Result: { this.props.data.evolution }</Text>
-        <View style={styles.button}><Button title='Play Again'/></View>
-        <View style={styles.button}><Button title='Exit'/></View>
+        <View style={styles.button}><Button title='Play Again' onPress={this.props.play} /></View>
+        <View style={styles.button}><Button title='Exit' color='red' onPress={this.props.exit} /></View>
       </View>
     )
   }

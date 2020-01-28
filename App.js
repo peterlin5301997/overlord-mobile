@@ -19,13 +19,16 @@ export default function App() {
     setData(data);
   }
 
+  const exit = () => {
+    setScreen('HomeScreen');
+  }
+
   return (
     <View style={styles.container}>
       <ImageBackground source={require('./images/pokemon-background.jpg')} style={styles.background}>
         {
-          currentScreen == 'HomeScreen' ? <HomeScreen play={play} /> :
           currentScreen == 'GameScreen' ? <GameScreen end={end} /> :
-          currentScreen == 'EndScreen' ? <EndScreen data={data} /> : null
+          currentScreen == 'EndScreen' ? <EndScreen data={data} play={play} exit={exit} /> : <HomeScreen play={play} />
         }
       </ImageBackground>
     </View>

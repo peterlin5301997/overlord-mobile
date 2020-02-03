@@ -90,7 +90,8 @@ class GameScreen extends React.Component {
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 30
+    fontSize: 30,
+    textAlign: 'center'
   },
   subtitle: {
     fontSize: 20
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: 'lightgrey',
+    backgroundColor: 'white',
   },
   innerContainer: {
     alignItems: 'center',
